@@ -1,20 +1,13 @@
 const importVars = {
   react: '^react$',
-  FSD: [
-    '^@/app/',
-    '^@/widgets/',
-    '^@/features/',
-    '^@/entities/',
-    '^@/shared/',
-    '^@/',
-  ],
+  FSD: ['^@/app/', '^@/widgets/', '^@/features/', '^@/entities/', '^@/shared/', '^@/'],
   relative: '^(?!.*.(s)?css$)[./\w]+',
   styles: '.*.(s)?css$',
 };
 
 /** @type {import("prettier").Config} */
 module.exports = {
-  plugins: [require.resolve('@trivago/prettier-plugin-sort-imports')],
+  plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss'],
 
   printWidth: 140,
   tabWidth: 2,
@@ -27,13 +20,7 @@ module.exports = {
   endOfLine: 'auto',
   jsxSingleQuote: false,
 
-  importOrder: [
-    importVars.react,
-    '<THIRD_PARTY_MODULES>',
-    ...importVars.FSD,
-    importVars.relative,
-    importVars.styles,
-  ],
+  importOrder: [importVars.react, '<THIRD_PARTY_MODULES>', ...importVars.FSD, importVars.relative, importVars.styles],
   importOrderSeparation: true,
   importOrderGroupNamespaceSpecifiers: false,
   importOrderSortSpecifiers: false,
